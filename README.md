@@ -1,6 +1,10 @@
 # UNREDD: Reddit without the Flare
 
-Reddit without colour or joy, made to be uninteresting sans-dopamine.
+This is a minimalist, distraction-free wrapper for using reddit without all the visual distractions. It's supposed to help you only click on the posts you **actually** want to read. 
+
+Accepting ideas and contributions! 
+
+Built with Vue 3
 
 ## Installation
 
