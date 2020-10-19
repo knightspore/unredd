@@ -29,7 +29,7 @@
 
     <!-- Load More Posts Button -->
     <div v-if="count>0" class="flex items-center justify-center p-2 py-12">
-      <button  @click="loadMore()" class="flex items-center px-4 py-2 font-bold text-gray-100 rounded-full shadow-inner"  :class="{'bg-gray-700': darkmode, 'bg-gray-900': !darkmode}">Load More Posts</button>
+      <button  @click="loadMore()" class="flex items-center px-4 py-2 font-bold text-gray-100 rounded-full shadow-inner focus:outline-none"  :class="{'bg-gray-700': darkmode, 'bg-gray-900': !darkmode}">Load More Posts</button>
     </div>
     
     <div v-if="showErrorMessage" class="p-12 text-center">
@@ -69,9 +69,8 @@ export default {
       this.loading = true;
       //this.redditPosts = null;
       axios.get('https://www.reddit.com/r/' + this.subreddit + '.json'+'?after='+this.after+'&count='+this.count).then(response => {
-        console.log(response.data.data.children.length);
         this.redditPosts = this.redditPosts.concat(response.data.data.children);
-        this.after=response.data.data.after;
+        this.after = response.data.data.after;
         this.loading = false;
         this.count+=25;
       }).catch(error => {
