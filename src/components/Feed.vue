@@ -3,7 +3,7 @@
 
     <!-- Search -->
     <div class="flex items-center justify-center gap-4">
-      <form @submit.prevent="loadSubredditPosts()" class="flex justify-center p-2">
+      <form @submit.prevent="changeSubreddit()" class="flex justify-center p-2">
         <div class="flex items-center px-4 py-2 font-bold text-gray-100 rounded-full shadow-inner" :class="{'bg-gray-700': darkmode, 'bg-gray-900': !darkmode}">
           <input class="bg-transparent" type="text" v-model="subreddit" placeholder="Subreddit...">
           <button type="submit">
@@ -85,7 +85,16 @@ export default {
         top: document.body.scrollHeight,
         behavior: 'smooth'
       })},100); // it didn't scroll without timeout
-    }
+    },
+      changeSubreddit() {
+          this.loading = true;
+
+          this.redditPosts = [];
+          this.after = '';
+          this.count = 0;
+          this.loadSubredditPosts();
+
+      }
   }
 }
 </script>
